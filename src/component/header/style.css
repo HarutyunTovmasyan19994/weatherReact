@@ -1,0 +1,77 @@
+.headerCommon{
+    width: 100%;
+    height: 80px;
+    background-color: blue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navDivRadio{
+    background-color: #e3e3e3;
+    border-radius: 30px;
+    padding: 10px;
+    margin-right: 15px;
+}
+.label{
+    margin-right: 10px;
+}
+.label input{
+    margin-left:5px;
+    padding: 5px;
+}
+.searchCity{
+    padding: 6px 12px;
+    border: none;
+    border-radius: 30px;
+    margin-right: 10px;
+}
+.searchCityBtn{
+    padding: 6px 12px;
+    border: none;
+    border-radius: 30px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.searchCityBtn:hover{
+    background-color: lightseagreen;
+}
+.switch {
+    width: 80px;
+    height: 32px;
+    background-color: #2fa5ed;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    position: relative;
+    margin-right: 15px;
+  }
+  .switch-toggle {
+    width: 50%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 4px;
+    transition: all 0.3s;
+  }
+  .switch span {
+    position: absolute;
+    top: 7px;
+    color: #fff;
+  }
+  
+  .switch span.c {
+    left: 8px;
+  }
+  
+  .switch span.f {
+    right: 8px;
+  }
+  
+  .switch-toggle.c {
+    transform: translateX(0);
+  }
+  
+  .switch-toggle.f {
+    transform: translateX(100%);
+  }

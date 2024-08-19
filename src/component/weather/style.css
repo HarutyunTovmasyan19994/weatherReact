@@ -1,0 +1,49 @@
+.coomonApp{
+    width: 100%;
+}
+.weather{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.weatherInfo{
+    width: 69.9999%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.weatherList{
+    width: 39.9999%;
+    height: 300px;
+    overflow-y: hidden;
+}
+.nameCountry{
+    padding: 5px;
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    line-height: 1.2;
+    font-family:'Times New Roman', Times, serif
+}
+.cecius{
+    padding: 5px;
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    line-height: 1.2;
+    font-family:'Times New Roman', Times, serif
+}
+.clouds{
+    padding: 5px;
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    line-height: 1.2;
+    font-family:'Times New Roman', Times, serif
+}
+.img2{
+    width: 100px;
+    height: 100px;
+}
