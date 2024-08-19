@@ -1,13 +1,11 @@
-import React,{useState,useEffect} from "react";
-import { useDispatch, useSelector } from "react-redux";
-import{WEATHER_CITY,WEATHER_CESIUS_FATHR} from "../../redux/action/actionType"
+import React,{useState} from "react";
+import { useDispatch } from "react-redux";
+import{WEATHER_CITY} from "../../redux/action/actionType"
 import "./style.css"
 
 
-const Header = ()=>{
+const Header = ({unit,setUnit})=>{
     const[city,setCity] = useState("")
-    const [unit, setUnit] = useState("metric");
-    const weatherState = useSelector(s=> s.weather)
     const dispatch = useDispatch("")
 
     const searchHandle =()=>{
@@ -20,11 +18,6 @@ const Header = ()=>{
         
       };
 
-      useEffect(()=>{
-        dispatch({type:WEATHER_CESIUS_FATHR,payload:unit})
-      },[])
-
-    console.log(unit,"555");
     
     return(
         <div className="headerCommon">

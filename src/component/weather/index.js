@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React,{useEffect,useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {WEATHER_INFO} from "../../redux/action/actionType"
 import ListWeather from "../list";
@@ -8,29 +8,26 @@ import "./style.css"
 
 
 
-const WeatherApp = ()=>{
-    const weatherState = useSelector(s=>s.weather)
+const WeatherApp = ({unit})=>{
+    const {data,city,metricImperial} = useSelector(s=>s.weather)
     const dispatch = useDispatch()
     useEffect(()=>{
-        axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${weatherState.city}&appid=3ab6f95dea6914e7670ba0dffe4791b0&units=${weatherState.metricImperial === "imperial" ? "imperial":"metric"}`)
+        axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=3ab6f95dea6914e7670ba0dffe4791b0&units=${unit}`)
         .then(resp=>dispatch({type:WEATHER_INFO,payload:resp}))
         .catch(e=>{
             alert("555")
         })
-    },[weatherState.city])
-   
-    console.log(weatherState.metricImperial,"645648418");
-    
+    },[city,unit])
 
     return(
-        <div className="coomonApp">
+        <div className="coomonApp">  
             <div className="weather">
                 <div className="weatherInfo">
                     {
-                            weatherState.data.map(item=>(
+                            data.map(item=>(
                                 <div key={item.data.id}>
                                 <p className="nameCountry"> {item.data.name}</p>
-                                <p className="cecius">{Math.round(item.data.main.temp)}{" "}  &deg;C </p>
+                                <p className="cecius">{Math.round(item.data.main.temp)}{" "}  &deg; {unit === "metric" ? "C" : "F"} </p>
                                
                                 {
                                 item.data.weather.map(it=>(
@@ -46,10 +43,10 @@ const WeatherApp = ()=>{
                                
                 </div>
                 <div className="weatherList">
-                    <ListWeather/>
+                    <ListWeather unit={unit}/>
                 </div>
             </div>
-            <FiveDaysWeather/>
+            <FiveDaysWeather unit={unit}/>
         </div>
     )
 }

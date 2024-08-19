@@ -5,13 +5,13 @@ import axios from "axios";
 import "./style.css"
 
 
-const ListWeather = () => {
+const ListWeather = ({unit}) => {
     const {list,city} = useSelector(s=>s.weather)
     const dispatch = useDispatch()
     useEffect(()=>{
-        axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=3ab6f95dea6914e7670ba0dffe4791b0&units=metric`)
+        axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=3ab6f95dea6914e7670ba0dffe4791b0&units=${unit}`)
         .then(resp=>dispatch({type:WEATHER_LIST,payload:resp.data}))
-    },[city])
+    },[city,unit])
     const filterForecastByFirstObjTime = (list) => {
         if (!list) {
           return [];
@@ -22,8 +22,6 @@ const ListWeather = () => {
       };
     
       const filteredForecast = filterForecastByFirstObjTime(list?.list);
-
-    // console.log(weatherState.list,"list")
     return(
         <div>
           {
@@ -33,7 +31,7 @@ const ListWeather = () => {
                     filteredForecast.map(item=>(
                         <ul className="ul" key={item.dt}>
                         <li>
-                            {item.dt_txt.slice(10)}{" "} {Math.round(item.main.temp)} &deg; {" "}C
+                            {item.dt_txt.slice(10)}{" "} {Math.round(item.main.temp)} &deg; {" "} {unit === "metric" ? "C" : "F"}
                             <img  src={`http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png`} className="img"/>
                             </li>
                         
@@ -49,15 +47,4 @@ const ListWeather = () => {
     )
 }
 
-export default ListWeather
-
-
-// >(
-//     <ul className="ul" key={data.dt}>
-//     <li>
-//         {data.dt_txt.slice(10)}{" "} {Math.round(data.main.temp)} &deg; {" "}C
-//         <img  src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`} className="img"/>
-//         </li>
-    
-// </ul>
-// )
+export default ListWeather 

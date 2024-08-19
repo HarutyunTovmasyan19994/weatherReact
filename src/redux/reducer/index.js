@@ -5,7 +5,6 @@ const initialState = {
     data:[],
     list:{},
     city:"Yerevan",
-    metricImperial : ""
 }
 
 const reducer = (state = initialState, action)=>{
@@ -16,8 +15,6 @@ const reducer = (state = initialState, action)=>{
             return {...state,city:action.payload}
         case WEATHER_LIST:
             return {...state,list:action.payload}
-        case WEATHER_CESIUS_FATHR:
-        return {...state,metricImperial:action.payload}
         default:
             return state
     }

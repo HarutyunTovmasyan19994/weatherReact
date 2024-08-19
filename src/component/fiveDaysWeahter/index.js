@@ -4,11 +4,10 @@ import './style.css'
 
 
 
-const FiveDaysWeather =  () =>{
-    const [day,stDay] = useState('')
+const FiveDaysWeather =  ({unit}) =>{
     const {list} = useSelector(s=>s.weather)
    
-    const filterForecastByFirstObjTime = (list) => {
+    const filterFiveDays = (list) => {
         if (!list) {
           return [];
         }
@@ -17,10 +16,7 @@ const FiveDaysWeather =  () =>{
         return list.filter((data) => data.dt_txt.endsWith(firstObjTime));
       };
     
-      const filteredForecast = filterForecastByFirstObjTime(list?.list);
-
-
-    console.log(filteredForecast,"info")
+      const filteredForecast = filterFiveDays(list?.list);
     return(
         <div className="commonWeather">
         
@@ -41,6 +37,8 @@ const FiveDaysWeather =  () =>{
                                 <h5>{data.weather[0].description}</h5>
                                 <h5 className="min-max-temp">
                                   {Math.round(data.main.temp)}&deg; 
+                                  {"  "}
+                                  {unit === "metric" ? "C" : "F"}
                                 </h5>
                               </div>
                             );
